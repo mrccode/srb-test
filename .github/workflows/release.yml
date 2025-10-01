@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - alpha
-      - 'alpha-*'
+      - 'next-*'
       - next
 
 permissions:
