@@ -59,7 +59,7 @@ choice=$(echo "$choice" | tr -d '[:space:]' | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g' |
 case $choice in
     1)
         print_header "Scenario 1: Patch Release (fix)"
-        print_instruction "This will create a fix commit and dry-run a patch release (e.g., 1.0.0 -> 1.0.1)"
+        print_instruction "This will create a fix commit and publish a patch release (e.g., 1.0.0 -> 1.0.1)"
         echo ""
         git checkout -B main 2>/dev/null || git checkout main
         echo "// Bug fix" >> src/index.ts
@@ -71,13 +71,13 @@ case $choice in
         git push origin main
         print_success "Pushed to remote"
         echo ""
-        print_instruction "Running dry-run release..."
-        npm run release:dry
+        print_instruction "Running release..."
+        npm run release
         ;;
 
     2)
         print_header "Scenario 2: Minor Release (feat)"
-        print_instruction "This will create a feature commit and dry-run a minor release (e.g., 1.0.0 -> 1.1.0)"
+        print_instruction "This will create a feature commit and publish a minor release (e.g., 1.0.0 -> 1.1.0)"
         echo ""
         git checkout -B main 2>/dev/null || git checkout main
         echo "// New feature" >> src/index.ts
@@ -89,13 +89,13 @@ case $choice in
         git push origin main
         print_success "Pushed to remote"
         echo ""
-        print_instruction "Running dry-run release..."
-        npm run release:dry
+        print_instruction "Running release..."
+        npm run release
         ;;
 
     3)
         print_header "Scenario 3: Major Release (BREAKING CHANGE)"
-        print_instruction "This will create a breaking change commit and dry-run a major release (e.g., 1.0.0 -> 2.0.0)"
+        print_instruction "This will create a breaking change commit and publish a major release (e.g., 1.0.0 -> 2.0.0)"
         echo ""
         git checkout -B main 2>/dev/null || git checkout main
         echo "// Breaking change" >> src/index.ts
@@ -109,13 +109,13 @@ BREAKING CHANGE: Calculator methods now return objects instead of numbers"
         git push origin main
         print_success "Pushed to remote"
         echo ""
-        print_instruction "Running dry-run release..."
-        npm run release:dry
+        print_instruction "Running release..."
+        npm run release
         ;;
 
     4)
         print_header "Scenario 4: Alpha Pre-release"
-        print_instruction "This will create an alpha branch and dry-run a pre-release (e.g., 1.1.0-alpha.1)"
+        print_instruction "This will create an alpha branch and publish a pre-release (e.g., 1.1.0-alpha.1)"
         echo ""
         git checkout -B alpha
         echo "// Alpha feature" >> src/index.ts
@@ -127,13 +127,13 @@ BREAKING CHANGE: Calculator methods now return objects instead of numbers"
         git push origin alpha
         print_success "Pushed to remote"
         echo ""
-        print_instruction "Running dry-run alpha release..."
-        npm run release:dry:alpha
+        print_instruction "Running alpha release..."
+        npm run release:alpha
         ;;
 
     5)
         print_header "Scenario 5: Next Pre-release"
-        print_instruction "This will create a next branch and dry-run a pre-release (e.g., 1.1.0-next.1)"
+        print_instruction "This will create a next branch and publish a pre-release (e.g., 1.1.0-next.1)"
         echo ""
         git checkout -B next
         echo "// Next feature" >> src/index.ts
@@ -145,8 +145,8 @@ BREAKING CHANGE: Calculator methods now return objects instead of numbers"
         git push origin next
         print_success "Pushed to remote"
         echo ""
-        print_instruction "Running dry-run next release..."
-        npm run release:dry:next
+        print_instruction "Running next release..."
+        npm run release:next
         ;;
 
     6)
@@ -179,7 +179,7 @@ esac
 echo ""
 print_success "Test scenario completed!"
 echo ""
-print_instruction "Note: These are DRY-RUN tests. No actual releases were created."
+print_instruction "Release has been published to GitHub."
 print_instruction "To see what commits were created, run: git log --oneline"
-print_instruction "To perform an actual release, run the commands without --dry-run flag"
+print_instruction "To see releases, visit: https://github.com/[your-org]/srb-test/releases"
 echo ""
