@@ -45,3 +45,4 @@ export function greet(name: string): string {
  * Get the version of the package
  */
 export const VERSION = '1.0.0';
+// Bug fix

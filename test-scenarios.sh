@@ -53,6 +53,9 @@ echo "6) Reset to initial state"
 echo ""
 read -p "Enter your choice (1-6): " choice
 
+# Strip escape sequences and whitespace
+choice=$(echo "$choice" | tr -d '[:space:]' | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g' | grep -o '[0-9]' | head -1)
+
 case $choice in
     1)
         print_header "Scenario 1: Patch Release (fix)"
@@ -131,6 +134,8 @@ BREAKING CHANGE: Calculator methods now return objects instead of numbers"
         print_instruction "This will reset the repository to a clean initial commit"
         echo ""
         read -p "Are you sure you want to reset? This will remove all test commits. (y/N): " confirm
+        # Strip escape sequences and whitespace
+        confirm=$(echo "$confirm" | tr -d '[:space:]' | sed 's/\x1b\[[0-9;]*[a-zA-Z]//g')
         if [[ $confirm == [yY] ]]; then
             git checkout -B main
             git reset --hard HEAD~10 2>/dev/null || true
