@@ -67,6 +67,10 @@ case $choice in
         git commit -m "fix: resolve division precision issue"
         print_success "Created fix commit"
         echo ""
+        print_instruction "Pushing to remote..."
+        git push origin main
+        print_success "Pushed to remote"
+        echo ""
         print_instruction "Running dry-run release..."
         npm run release:dry
         ;;
@@ -80,6 +84,10 @@ case $choice in
         git add .
         git commit -m "feat: add modulo operation to calculator"
         print_success "Created feature commit"
+        echo ""
+        print_instruction "Pushing to remote..."
+        git push origin main
+        print_success "Pushed to remote"
         echo ""
         print_instruction "Running dry-run release..."
         npm run release:dry
@@ -97,6 +105,10 @@ case $choice in
 BREAKING CHANGE: Calculator methods now return objects instead of numbers"
         print_success "Created breaking change commit"
         echo ""
+        print_instruction "Pushing to remote..."
+        git push origin main
+        print_success "Pushed to remote"
+        echo ""
         print_instruction "Running dry-run release..."
         npm run release:dry
         ;;
@@ -111,6 +123,10 @@ BREAKING CHANGE: Calculator methods now return objects instead of numbers"
         git commit -m "feat: add experimental power function"
         print_success "Created alpha feature commit"
         echo ""
+        print_instruction "Pushing to remote..."
+        git push origin alpha
+        print_success "Pushed to remote"
+        echo ""
         print_instruction "Running dry-run alpha release..."
         npm run release:dry:alpha
         ;;
@@ -124,6 +140,10 @@ BREAKING CHANGE: Calculator methods now return objects instead of numbers"
         git add .
         git commit -m "feat: add square root function"
         print_success "Created next feature commit"
+        echo ""
+        print_instruction "Pushing to remote..."
+        git push origin next
+        print_success "Pushed to remote"
         echo ""
         print_instruction "Running dry-run next release..."
         npm run release:dry:next
