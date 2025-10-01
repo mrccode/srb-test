@@ -70,3 +70,4 @@ export const VERSION = '1.0.0';
 // Bug fix
 // Bug fix
 // Next feature
+// Alpha feature
