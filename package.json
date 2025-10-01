@@ -14,9 +14,9 @@
     "release:dry": "semantic-release --dry-run",
     "release:dry:alpha": "semantic-release --dry-run --branches alpha",
     "release:dry:next": "semantic-release --dry-run --branches next",
-    "release": "semantic-release --no-ci",
-    "release:alpha": "semantic-release --no-ci --branches alpha",
-    "release:next": "semantic-release --no-ci --branches next"
+    "release": "semantic-release --no-ci --debug",
+    "release:alpha": "semantic-release --no-ci --debug --branches alpha",
+    "release:next": "semantic-release --no-ci --debug --branches next"
   },
   "keywords": [
     "semantic-release",
